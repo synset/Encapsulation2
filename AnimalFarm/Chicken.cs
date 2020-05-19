@@ -1,30 +1,24 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace AnimalFarm
 {
-    class Chicken
+    public class Chicken
     {
         private string name;
         private int age;
-        private int productPerDay;
         private const int minAge = 0;
         private const int maxAge = 15;
 
 
         public Chicken(string name, int age)
         {
-            this.Name = name;
-            this.Age = age;
+            Name = name;
+            Age = age;
         }
 
         public string Name
         {
-            get
-            {
-                return this.name;
-            }
+            get => name;
             set
             {
                 if (string.IsNullOrWhiteSpace(value))
@@ -36,51 +30,22 @@ namespace AnimalFarm
         }
         public int Age
         {
-            get
-            {
-                return this.age;
-            }
+            get => age;
             set
             {
-                if(value < minAge || value > maxAge)
+                if (value < minAge || value > maxAge)
                 {
                     throw new ArgumentException("Age must be between 0 and 15.");
                 }
-                this.age = value;
+                age = value;
             }
         }
 
-        public int ProductPerDay
-        {
-            get 
-            {
-                return this.CalculateProductPerDay(age);
-            }
-        }
+        public int ProductPerDay => CalculateProductPerDay(age);
 
-        private int CalculateProductPerDay(int age)
+        internal int CalculateProductPerDay(int age)
         {
-            if (age >= 0 && age < 5)
-            {
-                return 2;
-            }
-            else
-            {
-                return 1;
-            }
+            return age >= 0 && age < 5 ? 2 : 1;
         }
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
 }
